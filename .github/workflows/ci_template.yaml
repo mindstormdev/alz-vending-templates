@@ -63,7 +63,7 @@ jobs:
 
       - name: Terraform Plan
         id: plan
-        run: terraform plan -input=false
+        run: terraform plan -var="subscription_id=${{ vars.SUBSCRIPTION_ID }}" -var="tenant_id=${{ vars.AZURE_TENANT_ID }}"
 
       - name: Update Pull Request
         if: (success() || failure()) && github.event_name == 'pull_request'
