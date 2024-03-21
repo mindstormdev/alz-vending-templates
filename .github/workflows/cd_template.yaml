@@ -43,7 +43,7 @@ jobs:
       - name: Terraform Plan for ${{ github.event.inputs.terraform_action == 'destroy' && 'Destroy' || 'Apply' }}
         run: |
           # shellcheck disable=SC2086
-          terraform plan -out=tfplan -var="subscription_id=${{ vars.SUBSCRIPTION_ID }}" -var="tenant_id=${{ vars.AZURE_TENANT_ID }}" ${{ github.event.inputs.terraform_action == 'destroy' && '-destroy' || '' }}
+          terraform plan -out=tfplan -var="subscription_id=${{ vars.AZURE_SUBSCRIPTION_ID }}" -var="tenant_id=${{ vars.AZURE_TENANT_ID }}" ${{ github.event.inputs.terraform_action == 'destroy' && '-destroy' || '' }}
 
       - name: Create Module Artifact
         run: |
